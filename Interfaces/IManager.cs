@@ -8,5 +8,9 @@ namespace BroadcastPluginSDK.Interfaces
     public interface IManager
     {
         public event EventHandler<bool> TriggerRestart;
+
+        public event EventHandler<UserControl> ShowScreen;
+
+        public List<ToolStripItem>? ContextMenuItems { get; set; }
     }
 }
