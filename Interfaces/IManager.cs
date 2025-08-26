@@ -11,6 +11,8 @@ namespace BroadcastPluginSDK.Interfaces
 
         public event EventHandler<UserControl> ShowScreen;
 
+        public event EventHandler WriteConfiguration;
+
         public List<ToolStripItem>? ContextMenuItems { get; set; }
     }
 }

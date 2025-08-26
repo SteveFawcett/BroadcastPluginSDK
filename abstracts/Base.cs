@@ -22,7 +22,7 @@ public abstract class BroadcastPluginBase : IPlugin
         string? stanza = null )
     {
         _icon = icon ?? DefaultImage;
-        _stanza = stanza ?? "base";
+        _stanza = stanza;
         _mainIcon = new MainIcon(this, _icon);
         _infoPage = infoPage ?? new InfoPage
         {
@@ -42,6 +42,10 @@ public abstract class BroadcastPluginBase : IPlugin
         }
     }
 
+    public string? Stanza
+    {
+        get => _stanza;
+    }
     public virtual Image Icon
     {
         get => _icon ?? Resources.red;
