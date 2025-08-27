@@ -12,7 +12,7 @@ public abstract class BroadcastPluginBase : IPlugin
     private Image? _icon;
     private IInfoPage? _infoPage;
     private MainIcon _mainIcon;
-    private string _stanza;
+    private string _stanza; // TODO: Stanza can be null
     private static Image DefaultImage => Resources.red;
     // New protected constructor for DI
     protected BroadcastPluginBase(
