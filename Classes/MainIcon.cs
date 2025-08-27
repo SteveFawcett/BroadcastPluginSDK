@@ -29,7 +29,8 @@ public class MainIcon : PictureBox
 
     internal virtual void OnClick(object? sender, EventArgs e)
     {
-        _parent.OnClick();
+        var mouseEventArgs = e as MouseEventArgs ?? new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0);
+        _parent.OnClick(mouseEventArgs );
     }
 
     internal virtual void OnMouseHover(object? sender, EventArgs e)

@@ -42,6 +42,10 @@ public abstract class BroadcastPluginBase : IPlugin
         }
     }
 
+    public string? Stanza
+    {
+        get => _stanza;
+    }
     public virtual Image Icon
     {
         get => _icon ?? Resources.red;
@@ -61,7 +65,7 @@ public abstract class BroadcastPluginBase : IPlugin
         set
         {
             _mainIcon = value;
-            _mainIcon.Click += (s, e) => OnClick();
+            _mainIcon.Click += (s, e) => OnClick( e );
             _mainIcon.MouseHover += (s, e) => OnHover();
         }
     }
@@ -76,7 +80,7 @@ public abstract class BroadcastPluginBase : IPlugin
     public string FilePath { get; set; } = string.Empty;
     public string RepositoryUrl => GetAssemblyMetadata("RepositoryUrl") ?? string.Empty;
 
-    public event EventHandler? Click;
+    public event EventHandler<MouseEventArgs>? Click;
     public event EventHandler? MouseHover;
 
     private string? GetAssemblyMetadata(string key)
@@ -101,9 +105,10 @@ public abstract class BroadcastPluginBase : IPlugin
         }
     }
 
-    internal void OnClick()
+    internal void OnClick(EventArgs e)
     {
-        Click?.Invoke(this, EventArgs.Empty);
+        var args = e as MouseEventArgs ?? new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0);
+        Click?.Invoke(this, args);
     }
 
     internal void OnHover()

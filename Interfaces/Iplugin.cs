@@ -9,12 +9,13 @@ public interface IPlugin
     public string? Stanza { get; }
     public string Version { get; }
     public string Description { get; }
+    public string? Stanza { get; }
     public MainIcon MainIcon { get; }
     public IInfoPage InfoPage { get; }
     public string FilePath { get; set; }
     public string RepositoryUrl { get; }
     public GetCacheDataDelegate? GetCacheData { get; set; }
 
-    event EventHandler Click;
+    event EventHandler<MouseEventArgs> Click;
     event EventHandler MouseHover;
 }
