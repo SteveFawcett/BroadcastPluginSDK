@@ -12,7 +12,7 @@ public abstract class BroadcastPluginBase : IPlugin
     private Image? _icon;
     private IInfoPage? _infoPage;
     private MainIcon _mainIcon;
-    private string _stanza;
+    private string? _stanza;
     private static Image DefaultImage => Resources.red;
     // New protected constructor for DI
     protected BroadcastPluginBase(
@@ -53,7 +53,7 @@ public abstract class BroadcastPluginBase : IPlugin
     }
 
     public Assembly DerivedAssembly => GetType().Assembly;
-
+    public string? Stanza => _stanza;
     public string Name => GetType().FullName ?? GetType().Name;
     public string Version => DerivedAssembly.GetName().Version?.ToString() ?? "NOT SET";
     public string Description => GetAssemblyMetadata("Description") ?? "No description available.";

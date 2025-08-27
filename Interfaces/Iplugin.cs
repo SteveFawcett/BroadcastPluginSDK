@@ -6,6 +6,7 @@ public interface IPlugin
 {
     public string Name { get; }
     public string ShortName { get; }
+    public string? Stanza { get; }
     public string Version { get; }
     public string Description { get; }
     public string? Stanza { get; }
