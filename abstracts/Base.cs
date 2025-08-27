@@ -42,10 +42,6 @@ public abstract class BroadcastPluginBase : IPlugin
         }
     }
 
-    public string? Stanza
-    {
-        get => _stanza;
-    }
     public virtual Image Icon
     {
         get => _icon ?? Resources.red;
