@@ -22,8 +22,8 @@ public abstract class BroadcastPluginBase : IPlugin
         string? stanza = null )
     {
         _icon = icon ?? DefaultImage;
-        _mainIcon = new MainIcon(this, _icon);
         _stanza = stanza;
+        _mainIcon = new MainIcon(this, _icon);
         _infoPage = infoPage ?? new InfoPage
         {
             Icon = _icon,
