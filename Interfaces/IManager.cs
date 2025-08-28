@@ -13,6 +13,8 @@ namespace BroadcastPluginSDK.Interfaces
 
         public event EventHandler WriteConfiguration;
 
+        public bool Locked { get; set; } // True if the manager is locked and the application should not allow restart.
+
         public List<ToolStripItem>? ContextMenuItems { get; set; }
     }
 }
