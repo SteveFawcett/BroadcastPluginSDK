@@ -1,96 +1,38 @@
-﻿# Test Plugin
+﻿# BroadcastPluginSDK
 
-![GitHub Release](https://img.shields.io/github/v/release/SteveFawcett/BroadcastPluginSDK?label=GitHub)
+[![GitHub Release](https://img.shields.io/github/v/release/SteveFawcett/BroadcastPluginSDK?label=GitHub)](https://github.com/SteveFawcett/BroadcastPluginSDK/releases)
 [![🚀 Publish NuGet Package](https://github.com/SteveFawcett/BroadcastPluginSDK/actions/workflows/publish.yml/badge.svg?branch=master)](https://github.com/SteveFawcett/BroadcastPluginSDK/actions/workflows/publish.yml)
 
+A .NET 8 SDK for building broadcast plugins with a simple, extensible interface.
 
-## Creating a Plugin
-Plugins are created by implementing the `IBroadcast` interface. This interface is defined in the `PluginBase` project, which is a dependency of this project.
-To create a plugin, you need to create a class that implements the `IBroadcast` interface. Here is an example of how to do this:
+## Features
 
-- Create a new Windows Forms Control project. ensure it targets the same framework as the `PluginBase` project (e.g., .NET 8.0).
-- Add a reference to the `PluginBase` project in your new project.
-- Change the project file to include the `PluginBase` project as a reference, ensuring that it does not include runtime assets. This is necessary to avoid conflicts with the `IBroadcast` interface.
-- Set the base output directory of your plugin project to the `Plugins` directory of the main project. This is where the main application will look for plugins.
-- Inhert from `PluginBase.PluginControl` in your user control class.
+- Easy plugin integration for broadcast applications
+- Extensible architecture for custom plugin development
+- .NET 8 support
+- NuGet package distribution
 
-```csharp
-using Microsoft.Extensions.Configuration;
-using PluginBase;
+## Getting Started
 
-namespace MSFSPlugin
-{
-    public partial class UserControl1 : PluginBase.PluginControl
-    {
-        public UserControl1()
-        {
-            InitializeComponent();
-        }
+### Installation
 
-    }
-}
-```
+Install via NuGet:
+### Usage
 
-### Plugin Base Project Reference
-To overcome an error with ```typeof(IBroadcast).IsAssignableFrom(type)``` 
-returning false the following entry needs to be made to your projects file.
-```xml
-  <ItemGroup>
-    <ProjectReference Include="..\PluginBase\PluginBase.csproj">
-        <Private>false</Private>
-	    <ExcludeAssets>runtime</ExcludeAssets>
-    </ProjectReference>
-  </ItemGroup>
-```
+Create a plugin by implementing the provided interfaces:
+Register your plugin in your broadcast application:
+## Documentation
 
-### Publishing the Plugin
-The plugin is built as a ZIP file with all the components required to run the plugin.
+See the [Wiki](https://github.com/SteveFawcett/BroadcastPluginSDK/wiki) for detailed documentation and examples.
 
-To do this you need to edit the project file of your plugin project and add the following properties:
-```xml
+## Contributing
 
-    <PropertyGroup>
-        ....
-        .... Existing properties
-        ....
-        <PackageDir Condition="'$(PackageDir)' == ''">$([System.IO.Path]::Combine($(OutputPath),'package'))/</PackageDir>
-	    <PackagePath> c:\plugins\API.zip</PackagePath>
-    </PropertyGroup>
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-	<Target Name="Package" DependsOnTargets="Publish">
-		<MakeDir Directories="$(PackageDir)" />
-		<ZipDirectory Overwrite="true" SourceDirectory="$(MSBuildProjectDirectory)/$(PublishDir)" DestinationFile="$(PackagePath)" />
-	</Target>
-	<Target Name="PackageClean" AfterTargets="Clean">
-		<Delete Files="$(PackagePath)" />
-	</Target>
-  ```
-  Now on your command line you can run the following command to build and package your plugin:
-  ```bash
-  dotnet publish /t:Package
-  ```
-  You can also add the configuration for example:
-  ```bash 
-    dotnet publish /t:Package -c Release
-  ```
+## License
 
-## Development
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
-When changing the plugin SDK you may want to deliver the local (debug) version from a project dependancy and the (Release) version frp, the nuget package.
+## Support
 
-```
-	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
-		<ProjectReference Include="..\BroadcastPluginSDK\BroadcastPluginSDK.csproj" />
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(Configuration)' == 'Release'">
-		<PackageReference Include="BroadcastPluginSDK" Version="1.0.4" />
-	</ItemGroup>
- ```
-
- Then it is possible to build manually or via the GUI:
-
- ```
- dotnet build --configuration:Debug --target:Package -p:OutputDirectory=c:\Plugins\ -p:Version=0.0.3
- dotnet build --configuration:Release --target:Package -p:OutputDirectory=c:\Plugins\ -p:Version=0.0.3
- ```
+For issues and feature requests, please use the [GitHub Issues](https://github.com/SteveFawcett/BroadcastPluginSDK/issues) page.
