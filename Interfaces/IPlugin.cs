@@ -14,6 +14,7 @@ public interface IPlugin
     public string FilePath { get; set; }
     public string RepositoryUrl { get; }
     public GetCacheDataDelegate? GetCacheData { get; set; }
+    public bool Enabled { get; }
 
     event EventHandler<MouseEventArgs> Click;
     event EventHandler MouseHover;

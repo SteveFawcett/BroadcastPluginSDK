@@ -55,6 +55,10 @@ public abstract class BroadcastPluginBase : IPlugin
     public string Description => GetAssemblyMetadata("Description") ?? "No description available.";
     public string ShortName => (GetType().FullName ?? GetType().Name).Split('.').First();
 
+    public bool Enabled
+    {
+        get => _configuration.GetValue("Enabled", true);
+    }
     public MainIcon MainIcon
     {
         get => _mainIcon;
