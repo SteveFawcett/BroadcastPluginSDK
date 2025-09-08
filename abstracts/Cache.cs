@@ -29,6 +29,6 @@ public abstract class BroadcastCacheBase : BroadcastPluginBase, ICache
 
     public bool Master { get; set; }
     public abstract List<KeyValuePair<string, string>> CacheReader(List<string> keys);
-    public abstract void Write(Dictionary<string, string> data);
+    public abstract void CacheWriter(Dictionary<string, string> data);
     public abstract void Clear();
 }
