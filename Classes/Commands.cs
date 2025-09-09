@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace BroadcastPluginSDK.Classes
 {
+    public enum Commands
+    {
+        START_FLIGHT_SIMULATOR,
+        SHUTDOWN_SERVER,
+    }
     public enum CommandStatus
     {
         New = 0,
@@ -17,7 +22,7 @@ namespace BroadcastPluginSDK.Classes
     public class CommandItem
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
-        public string CommandText { get; set; } = string.Empty;
+        public Commands Command { get; set; } = Commands.START_FLIGHT_SIMULATOR;
         public CommandStatus Status { get; set; } = CommandStatus.New;
         public Dictionary<string, string> Parameters { get; set; } = new Dictionary<string, string>();
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
