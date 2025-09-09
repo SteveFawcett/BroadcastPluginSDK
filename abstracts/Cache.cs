@@ -1,6 +1,7 @@
-﻿using System.Diagnostics;
+﻿using BroadcastPluginSDK.Classes;
 using BroadcastPluginSDK.Interfaces;
 using Microsoft.Extensions.Configuration;
+using System.Diagnostics;
 
 namespace BroadcastPluginSDK.abstracts;
 
@@ -30,6 +31,6 @@ public abstract class BroadcastCacheBase : BroadcastPluginBase, ICache
     public abstract List<KeyValuePair<string, string>> CacheReader(List<string> keys);
     public abstract void CacheWriter(Dictionary<string, string> data);
     public abstract void Clear();
-    public abstract List<KeyValuePair<string, string>> CommandReader(List<string> keys);
-    public abstract void CommandWriter(Dictionary<string, string> data);
+    public abstract List<CommandItem> CommandReader(CommandStatus status);
+    public abstract void CommandWriter(CommandItem data);
 }

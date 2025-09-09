@@ -1,4 +1,6 @@
-﻿namespace BroadcastPluginSDK.Interfaces;
+﻿using BroadcastPluginSDK.Classes;
+
+namespace BroadcastPluginSDK.Interfaces;
 
 public interface ICache
 {
@@ -6,6 +8,6 @@ public interface ICache
     public List<KeyValuePair<string, string>> CacheReader(List<string> keys);
     public void CacheWriter(Dictionary<string, string> data);
     public void Clear();
-    public List<KeyValuePair<string, string>> CommandReader(List<string> keys);
-    public void CommandWriter(Dictionary<string, string> data);
+    public List<CommandItem> CommandReader( CommandStatus status);
+    public void CommandWriter(CommandItem data);
 }
