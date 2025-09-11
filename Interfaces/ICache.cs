@@ -8,6 +8,6 @@ public interface ICache
     public List<KeyValuePair<string, string>> CacheReader(List<string> keys);
     public void CacheWriter(Dictionary<string, string> data);
     public void Clear();
-    public List<CommandItem> CommandReader( CommandStatus status);
+    public IEnumerable<CommandItem> CommandReader(BroadcastPluginSDK.Classes.CommandStatus status);
     public void CommandWriter(CommandItem data);
 }
