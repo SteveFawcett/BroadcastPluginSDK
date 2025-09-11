@@ -82,6 +82,7 @@ public abstract class BroadcastPluginBase : IPlugin
 
     public event EventHandler<MouseEventArgs>? Click;
     public event EventHandler? MouseHover;
+    public event EventHandler<Image>? ImageChanged;
 
     private string? GetAssemblyMetadata(string key)
     {
@@ -103,6 +104,11 @@ public abstract class BroadcastPluginBase : IPlugin
             // Recurse into children
             DumpConfiguration(section, indent + "  ");
         }
+    }
+
+    public void ImageChangedInvoke(Image img)
+    {
+        ImageChanged?.Invoke(this, img);
     }
 
     internal void OnClick(EventArgs e)

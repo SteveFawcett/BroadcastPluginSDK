@@ -18,4 +18,6 @@ public interface IPlugin
 
     event EventHandler<MouseEventArgs> Click;
     event EventHandler MouseHover;
+
+    public event EventHandler<Image> ImageChanged;
 }
