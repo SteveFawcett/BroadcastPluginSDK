@@ -26,7 +26,7 @@ namespace BroadcastPluginSDK.Classes
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
         public string? Result { get; set; }
-
+        public string? Errors { get; set; }
         public override string ToString()
         {
             return $"{Name} - {Status}";
