@@ -55,6 +55,10 @@ public abstract class BroadcastPluginBase : IPlugin
     public string Description => GetAssemblyMetadata("Description") ?? "No description available.";
     public string ShortName => (GetType().FullName ?? GetType().Name).Split('.').First();
 
+    public bool Enabled
+    {
+        get => _configuration.GetValue("Enabled", true);
+    }
     public MainIcon MainIcon
     {
         get => _mainIcon;
@@ -78,6 +82,7 @@ public abstract class BroadcastPluginBase : IPlugin
 
     public event EventHandler<MouseEventArgs>? Click;
     public event EventHandler? MouseHover;
+    public event EventHandler<Image>? ImageChanged;
 
     private string? GetAssemblyMetadata(string key)
     {
@@ -99,6 +104,11 @@ public abstract class BroadcastPluginBase : IPlugin
             // Recurse into children
             DumpConfiguration(section, indent + "  ");
         }
+    }
+
+    public void ImageChangedInvoke(Image img)
+    {
+        ImageChanged?.Invoke(this, img);
     }
 
     internal void OnClick(EventArgs e)
