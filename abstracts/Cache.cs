@@ -31,6 +31,6 @@ public abstract class BroadcastCacheBase : BroadcastPluginBase, ICache
     public abstract List<KeyValuePair<string, string>> CacheReader(List<string> keys);
     public abstract void CacheWriter(Dictionary<string, string> data);
     public abstract void Clear();
-    public abstract IEnumerable<CommandItem> CommandReader(BroadcastPluginSDK.Classes.CommandStatus status);
+    public abstract IEnumerable<CommandItem> CommandReader(CommandStatus status);
     public abstract void CommandWriter(CommandItem data);
 }
