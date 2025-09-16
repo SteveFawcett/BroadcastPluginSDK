@@ -14,10 +14,10 @@ namespace BroadcastPluginSDK.Classes
 
     public class CommandItem
     {
+        public List<(Rectangle bounds, string label)> clickableBadges = new(); 
+
         public string Id { get; set; } = Guid.NewGuid().ToString();
-        public string Name { get; set; } = string.Empty;
-        public string? Description { get; set; } = string.Empty;
-        public string Command { get; set; } = string.Empty;
+        public required string Command { get; set; } 
         public CommandStatus Status { get; set; } = CommandStatus.New;
         public Dictionary<string, string> Parameters { get; set; } = new Dictionary<string, string>();
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
@@ -26,7 +26,7 @@ namespace BroadcastPluginSDK.Classes
         public string? Errors { get; set; }
         public override string ToString()
         {
-            return $"{Name} - {Status}";
+            return $"{Id} - {Status}";
         }
     }
 }
