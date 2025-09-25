@@ -15,8 +15,6 @@ namespace BroadcastPluginSDK.Classes
 
     public class CommandItem : IUpdatableItem
     {
-        public List<(Rectangle bounds, string label)> clickableBadges = new(); 
-
         public string Key { get; set; } = Guid.NewGuid().ToString();
         public required string Value { get; set; } 
         public CommandStatus Status { get; set; } = CommandStatus.New;
