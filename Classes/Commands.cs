@@ -17,6 +17,7 @@ namespace BroadcastPluginSDK.Classes
     {
         public string Key { get; set; } = Guid.NewGuid().ToString();
         public required string Value { get; set; } 
+        public string? FullComand { get; set; } = string.Empty;
         public CommandStatus Status { get; set; } = CommandStatus.New;
         public Dictionary<string, string> Parameters { get; set; } = new Dictionary<string, string>();
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
