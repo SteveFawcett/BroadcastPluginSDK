@@ -2,5 +2,5 @@
 
 public interface IProvider
 {
-    public event EventHandler<Dictionary<string, string>> DataReceived;
+    public event EventHandler<CacheData> DataReceived;
 }
