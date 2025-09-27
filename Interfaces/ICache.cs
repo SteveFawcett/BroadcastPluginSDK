@@ -8,6 +8,7 @@ public enum CachePrefixes
     COMMAND,
     CONFIG,
     STATUS,
+    SYSTEM,
 }
 
 public class CacheData
