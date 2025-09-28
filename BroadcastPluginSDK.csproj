@@ -67,9 +67,6 @@
       <PackagePath>\</PackagePath>
       <Pack>True</Pack>
     </None>
-    <None Update="Resources\airplane.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="Resources\airplane.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
