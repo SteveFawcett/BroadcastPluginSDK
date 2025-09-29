@@ -19,10 +19,9 @@ public class CacheData
 
 public interface ICache
 {
+    public event EventHandler<CommandItem> CommandSent;
     public bool Master { get; set; }
-    public List<KeyValuePair<string, string>> CacheReader(List<string> keys);
     public void CacheWriter( CacheData payload);
     public void Clear();
-    public IEnumerable<CommandItem> CommandReader(CommandStatus status);
     public void CommandWriter(CommandItem data);
 }
