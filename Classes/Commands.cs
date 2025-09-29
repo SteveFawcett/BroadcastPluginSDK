@@ -4,6 +4,11 @@ using CyberDog.Interfaces;
 
 namespace BroadcastPluginSDK.Classes
 {
+    public enum CommandTypes
+    {
+        OperatingSystem ,
+        Simulator
+    }
     public enum CommandStatus
     {
         New,
@@ -16,6 +21,7 @@ namespace BroadcastPluginSDK.Classes
     public class CommandItem : IUpdatableItem
     {
         public string Key { get; set; } = Guid.NewGuid().ToString();
+        public required CommandTypes CommandType { get; set; } = CommandTypes.OperatingSystem;
         public required string Value { get; set; } 
         public string? FullComand { get; set; } = string.Empty;
         public CommandStatus Status { get; set; } = CommandStatus.New;
