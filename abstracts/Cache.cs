@@ -26,12 +26,6 @@ public abstract class BroadcastCacheBase : BroadcastPluginBase, ICache
             Master = false;
         }
     }
-
-    public void  BroadcastJob( CommandItem job )
-    {
-        CommandSent?.Invoke(this, job); 
-    }
-    public event EventHandler<CommandItem>? CommandSent;
     public bool Master { get; set; }
     public abstract void CacheWriter(CacheData payload );
     public abstract void Clear();

@@ -19,7 +19,6 @@ public class CacheData
 
 public interface ICache
 {
-    public event EventHandler<CommandItem> CommandSent;
     public bool Master { get; set; }
     public void CacheWriter( CacheData payload);
     public void Clear();

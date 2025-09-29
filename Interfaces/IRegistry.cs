@@ -12,6 +12,7 @@ public interface IPluginRegistry
     public IEnumerable<BroadcastCacheBase>? Caches();
     public IEnumerable<IProvider>? Providers();
     public ICache? MasterCache();
+    public IEnumerable<ICommandHandler> CommandHandlers();
 
     public record PluginInfo(string Name, string Version, string FilePath, string Description, string RepositoryUrl);
 }
