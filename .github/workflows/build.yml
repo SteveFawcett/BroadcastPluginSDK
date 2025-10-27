@@ -94,7 +94,7 @@ jobs:
           echo "::endgroup::"
 
       - name: 📤 Upload NuGet package
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: nuget
           if-no-files-found: error
